@@ -1,0 +1,38 @@
+# Secrets
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.pfx
+*.p12
+*.ovpn
+*secret*
+*token*
+!**/token-template.md
+
+# Config exports that can contain secrets
+*.cfg.bak
+*backup*.xml
+*.conf.bak
+
+# VM and disk images
+*.vmdk
+*.vdi
+*.vhd
+*.vhdx
+*.ova
+*.ovf
+*.iso
+*.qcow2
+
+# Packet captures (may contain personal traffic)
+*.pcap
+*.pcapng
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.obsidian/
