@@ -18,3 +18,5 @@ Serial numbers, IMEIs, MAC addresses, and real hostnames are intentionally omitt
 | CloudHub | AWS EC2 | Self-hosted Nextcloud |
 | Monitoring server | AWS | TODO |
 | ELK Stack SOC | AWS | TODO |
+| SIEM simulation | Azure | Windows 10 honeypot VM, Log Analytics workspace, Microsoft Sentinel |
+| PQC TLS POC | GCP | ML-DSA TLS handshake testing |

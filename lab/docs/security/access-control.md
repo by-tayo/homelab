@@ -5,6 +5,8 @@
 | Remote access to home devices | Tailscale only — no port forwarding |
 | Windows Command Center | API token for read access + separate PIN for any state-changing action; per-IP lockout after failed attempts; audit log |
 | AWS instances | Security groups, SSH key auth |
+| Azure honeypot | RDP only for setup; intentionally open NSG — treated as compromised |
+| GCP | gcloud CLI with IAM; VPC firewall rules |
 | Lab domain accounts | Test accounts only — never reused elsewhere |
 | Secrets | Password manager or local `.env` files, never Git |
 

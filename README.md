@@ -14,9 +14,10 @@ the honest record: what I set up, what broke, how I fixed it, and what I learned
 
 ## Objectives
 
-- Run and document real infrastructure across cloud (AWS), on-prem hardware, and virtual labs.
+- Run and document real infrastructure across three clouds (AWS, Azure, GCP), on-prem hardware, and virtual labs.
 - Practice Windows enterprise skills — Active Directory, Group Policy, Sysmon, Windows Event Logs.
-- Collect and investigate security telemetry with Splunk and the ELK Stack.
+- Collect and investigate security telemetry with Splunk, the ELK Stack, and Microsoft Sentinel.
+- Test post-quantum cryptography (ML-DSA certificates, ML-KEM key exchange) in real TLS handshakes.
 - Practice networking: routing, DNS, DHCP, firewalls, VPNs, segmentation, and traffic analysis.
 - Run attacks in an isolated lab and prove they are detected.
 - Treat mobile and legacy devices as real endpoints to monitor and isolate.
@@ -25,11 +26,13 @@ the honest record: what I set up, what broke, how I fixed it, and what I learned
 ## The environment at a glance
 
 ```text
-                        ┌──────────── CLOUD (AWS) ────────────┐
-                        │  CloudHub (self-hosted Nextcloud)   │
-                        │  Monitoring server                  │
-                        │  ELK Stack SOC                      │
-                        └──────────────┬──────────────────────┘
+  ┌──────────── AWS ────────────┐ ┌──── Azure ─────┐ ┌──── GCP ──────┐
+  │ CloudHub (Nextcloud)        │ │ Sentinel SIEM  │ │ PQC TLS POC   │
+  │ Monitoring server           │ │ + honeypot VM  │ │ (ML-DSA certs)│
+  │ ELK Stack SOC               │ │                │ │               │
+  └──────────────┬──────────────┘ └───────┬────────┘ └──────┬────────┘
+                 └─────────────────────────┼─────────────────┘
+                                           │
                                        │  Tailscale (private tunnel)
 Internet ── TP-Link Archer AX6000 ─────┤
                │            │          │
@@ -74,6 +77,9 @@ planned additions: [procurement roadmap](docs/hardware/procurement-roadmap.md)
 | Splunk Enterprise + Universal Forwarder | SIEM for the AD and SOC labs |
 | Sysmon (SwiftOnSecurity config) | Windows endpoint telemetry |
 | ELK Stack | SOC stack in AWS |
+| Microsoft Sentinel + Log Analytics | Cloud SIEM for the Azure honeypot lab; queried with KQL |
+| OpenSSL + gcloud CLI | PQC TLS handshake testing in GCP |
+| Wireshark | Packet capture and TLS handshake inspection |
 | Kali Linux | Isolated attack box |
 | Tailscale | Private remote access — no admin interfaces exposed publicly |
 | Docker Desktop | Local containers (Gitea, BloodHound CE) |
@@ -87,6 +93,8 @@ planned additions: [procurement roadmap](docs/hardware/procurement-roadmap.md)
 | [CloudHub](labs/cloudhub.md) | AWS EC2 | Self-hosted Nextcloud; TrueNAS integration planned |
 | [AWS monitoring server](labs/aws-monitoring.md) | AWS | TODO |
 | [ELK Stack SOC](labs/elk-soc.md) | AWS | TODO |
+| [SIEM simulation](labs/azure-siem-simulation.md) | Azure | Exposed Windows 10 honeypot, logs into Microsoft Sentinel via Log Analytics, KQL queries, GeoIP live attack map |
+| [PQC TLS POC](labs/gcp-pqc-poc.md) | GCP | TLS handshakes with ML-DSA-65/87 certificates and hybrid ML-KEM key exchange — in progress |
 | [Windows Command Center](labs/windows-command-center.md) | XPS 16 + Tailscale | Phone dashboard and control panel for the XPS 16 |
 | [no-brainer](labs/no-brainer.md) | Local | Self-hosted note-taking stack — Obsidian, Gitea, MCP |
 
@@ -119,6 +127,7 @@ planned additions: [procurement roadmap](docs/hardware/procurement-roadmap.md)
 - [ ] First real run of Windows Command Center on the XPS 16
 
 **Next**
+- [ ] Revisit the Azure SIEM honeypot lab
 - [ ] Add TrueNAS and connect it to CloudHub
 - [ ] Pi-hole DNS on a Raspberry Pi 4
 - [ ] Backup and restore tests for the VM labs

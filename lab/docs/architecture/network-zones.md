@@ -10,6 +10,8 @@ These are the zones that exist today. Planned zones are listed separately.
 | SOC lab (VirtualBox) | Windows 11 Enterprise VM, Ubuntu VM | Isolated lab |
 | Tailnet | XPS 16, phone, other enrolled devices | Trusted, authenticated |
 | AWS | CloudHub, monitoring server, ELK SOC | Internet-facing, controlled by security groups |
+| Azure | Windows 10 honeypot, Log Analytics, Sentinel | Honeypot is intentionally exposed — untrusted, isolated in its own resource group |
+| GCP | PQC TLS POC instances | Controlled by VPC firewall rules |
 
 ## Rules of thumb
 

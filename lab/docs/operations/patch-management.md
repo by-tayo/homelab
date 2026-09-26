@@ -6,4 +6,6 @@
 | AX6000 | Vendor firmware | TODO: check quarterly |
 | Lab VMs | Manual, from snapshots | TODO |
 | AWS Linux instances | `dnf` / `apt` | TODO |
+| Azure resources | TODO | TODO |
+| GCP instances | TODO | TODO |
 | Galaxy S5 | None available — isolated instead | — |
