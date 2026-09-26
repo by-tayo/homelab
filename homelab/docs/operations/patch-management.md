@@ -7,5 +7,6 @@
 | Lab VMs | Manual, from snapshots | TODO |
 | AWS Linux instances | `dnf` / `apt` | TODO |
 | Azure resources | TODO | TODO |
-| GCP instances | TODO | TODO |
+| Docker images | Rebuild with updated base images | TODO |
+| GCP instances (planned) | TODO | TODO |
 | Galaxy S5 | None available — isolated instead | — |
